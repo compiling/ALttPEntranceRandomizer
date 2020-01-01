@@ -200,6 +200,7 @@ def start():
     parser.add_argument('--compassshuffle', help='Compasses are no longer restricted to their dungeons, but can be anywhere', action='store_true')
     parser.add_argument('--keyshuffle', help='Small Keys are no longer restricted to their dungeons, but can be anywhere', action='store_true')
     parser.add_argument('--bigkeyshuffle', help='Big Keys are no longer restricted to their dungeons, but can be anywhere', action='store_true')
+    parser.add_argument('--keysanity', help=argparse.SUPPRESS, action='store_true')
     parser.add_argument('--retro', help='''\
                              Keys are universal, shooting arrows costs rupees,
                              and a few other little things make this more like Zelda-1.
@@ -254,6 +255,8 @@ def start():
 
     parser.add_argument('--outputpath')
     args = parser.parse_args()
+    if args.keysanity:
+        args.mapshuffle, args.compassshuffle, args.keyshuffle, args.bigkeyshuffle = [True] * 4
 
     if args.outputpath and os.path.isdir(args.outputpath):
         output_path.cached_path = args.outputpath
