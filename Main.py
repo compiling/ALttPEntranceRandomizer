@@ -33,6 +33,7 @@ def main(args, seed=None):
         world.seed = int(seed)
     random.seed(world.seed)
 
+    world.placement = args.placement
     world.mapshuffle = args.mapshuffle
     world.compassshuffle = args.compassshuffle
     world.keyshuffle = args.keyshuffle
@@ -222,6 +223,7 @@ def copy_world(world):
     ret.bigkeyshuffle = world.bigkeyshuffle
     ret.crystals_needed_for_ganon = world.crystals_needed_for_ganon
     ret.crystals_needed_for_gt = world.crystals_needed_for_gt
+    ret.placement = world.placement
 
     if world.mode != 'inverted':
         for player in range(1, world.players + 1):

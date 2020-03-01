@@ -28,6 +28,15 @@ def start():
                              No Logic: Distribute items without regard for
                                              item requirements.
                              ''')
+    parser.add_argument('--placement', default='basic', const='basic', nargs='?', choices=['basic', 'advanced'],
+                        help='''
+                            Select Item Placement Rules. (default: %(default)s)
+                            Basic:      Prevents items from being placed in obscure locations, and
+                                        ensures sword and defense upgrades are available for late game
+                                        dungeons.
+                            Advanced:   Maximises glitchless item placement reach.  Dark rooms with torches
+                                        are accessible with the Fire Rod.  Turtle Rock Laser Bridge skips
+                                        may be required if you can access that entrance.''')
     parser.add_argument('--mode', default='open', const='open', nargs='?', choices=['standard', 'open', 'inverted'],
                         help='''\
                              Select game mode. (default: %(default)s)

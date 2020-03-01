@@ -193,6 +193,14 @@ def guiMain(args=None):
     logicLabel = Label(logicFrame, text='Game logic')
     logicLabel.pack(side=LEFT)
 
+    placementFrame = Frame(drowDownFrame)
+    placementVar = StringVar()
+    placementVar.set('basic')
+    placementOptionMenu = OptionMenu(placementFrame, placementVar, 'basic', 'advanced')
+    placementOptionMenu.pack(side=RIGHT)
+    placementLabel = Label(placementFrame, text='Item Placement')
+    placementLabel.pack(side=LEFT)
+
     goalFrame = Frame(drowDownFrame)
     goalVar = StringVar()
     goalVar.set('ganon')
@@ -283,6 +291,7 @@ def guiMain(args=None):
 
     modeFrame.pack(expand=True, anchor=E)
     logicFrame.pack(expand=True, anchor=E)
+    placementFrame.pack(expand=True, anchor=E)
     goalFrame.pack(expand=True, anchor=E)
     crystalsGTFrame.pack(expand=True, anchor=E)
     crystalsGanonFrame.pack(expand=True, anchor=E)
@@ -370,6 +379,7 @@ def guiMain(args=None):
         guiargs.count = int(countVar.get()) if countVar.get() != '1' else None
         guiargs.mode = modeVar.get()
         guiargs.logic = logicVar.get()
+        guiargs.placement = placementVar.get()
         guiargs.goal = goalVar.get()
         guiargs.crystals_gt = crystalsGTVar.get()
         guiargs.crystals_ganon = crystalsGanonVar.get()
@@ -1152,6 +1162,7 @@ def guiMain(args=None):
         heartbeepVar.set(args.heartbeep)
         fastMenuVar.set(args.fastmenu)
         logicVar.set(args.logic)
+        placementVar.set(args.placement)
         romVar.set(args.rom)
         shuffleGanonVar.set(args.shuffleganon)
         hintsVar.set(args.hints)

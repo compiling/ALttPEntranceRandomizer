@@ -14,6 +14,7 @@ class World(object):
         self.players = players
         self.shuffle = shuffle
         self.logic = logic
+        self.placement = 'basic'
         self.mode = mode
         self.swords = swords
         self.difficulty = difficulty
@@ -490,7 +491,9 @@ class CollectionState(object):
         return self.has('Fire Rod', player) or (self.has('Bombos', player) and self.has_sword(player))
     
     def can_avoid_lasers(self, player):
-        return self.has('Mirror Shield', player) or self.has('Cane of Byrna', player) or self.has('Cape', player)
+        eye_bridge = self.world.get_region('Turtle Rock (Eye Bridge)', player)
+        can_backdoor_tr = len([e for e in eye_bridge.entrances if not e.parent_region.dungeon and e.can_reach(self)]) > 0
+        return self.has('Mirror Shield', player) or self.has('Cane of Byrna', player) or self.has('Cape', player) or self.world.placement != 'basic' and can_backdoor_tr
 
     def is_not_bunny(self, region, player):
         if self.has_Pearl(player):
