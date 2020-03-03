@@ -1,3 +1,7 @@
+# Branch information
+
+This is an exploratory branch, to see how the concept of basic/advanced item placement would fit into Entrance Randomizer, and is not intended to be merged.
+
 # ALttPEntranceRandomizer
 
 This is a entrance randomizer for _The Legend of Zelda: A Link to the Past_ for the SNES.
