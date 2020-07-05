@@ -33,6 +33,8 @@ def link_doors(world, player):
         connect_simple_door(world, exitName, regionName, player)
     for ent, ext in ladders:
         connect_two_way(world, ent, ext, player)
+    for ent, ext in mandatory_open_edges:
+        connect_two_way(world, ent, ext, player)
 
     if world.doorShuffle[player] == 'vanilla':
         for entrance, ext in open_edges:
@@ -1539,7 +1541,11 @@ open_edges = [
     ('Thieves Ambush EN Edge', 'Thieves BK Corner WN Edge'),
     ('Thieves BK Corner S Edge', 'Thieves Compass Room N Edge'),
     ('Thieves BK Corner SW Edge', 'Thieves Compass Room NW Edge'),
-    ('Thieves Compass Room WS Edge', 'Thieves Big Chest Nook ES Edge'),
+    ('Thieves Compass Room WS Edge', 'Thieves Big Chest Nook ES Edge')
+]
+
+# Keep thieves attic connected to make sure it is not on the path to Thieves boss room
+mandatory_open_edges = [
     ('Thieves Cricket Hall Left Edge', 'Thieves Cricket Hall Right Edge')
 ]
 
