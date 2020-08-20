@@ -127,6 +127,10 @@ def can_place_boss(world, player, boss, dungeon_name, level=None):
         if boss in ["Blind"]:
             return False
 
+    if world.doorShuffle[player] != 'vanilla' and dungeon_name == 'Ganons Tower' and level == 'bottom':
+        if boss in ["Blind"]:
+            return False
+
     if dungeon_name == 'Tower of Hera' and boss in ["Armos Knights", "Arrghus",	"Blind", "Trinexx", "Lanmolas"]:
         return False
 
@@ -146,6 +150,7 @@ def place_bosses(world, player):
         ['Tower of Hera', None],
         ['Skull Woods', None],
         ['Ganons Tower', 'middle'],
+        ['Ganons Tower', 'bottom'],
         ['Eastern Palace', None],
         ['Desert Palace', None],
         ['Palace of Darkness', None],
@@ -154,7 +159,6 @@ def place_bosses(world, player):
         ['Ice Palace', None],
         ['Misery Mire', None],
         ['Turtle Rock', None],
-        ['Ganons Tower', 'bottom'],
     ]
 
     all_bosses = sorted(boss_table.keys()) #s orted to be deterministic on older pythons
