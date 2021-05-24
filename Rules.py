@@ -1324,7 +1324,7 @@ def standard_rules(world, player):
             set_rule(entrance, lambda state: state.has('Zelda Delivered', player))
     set_rule(world.get_entrance('Sanctuary Exit', player), lambda state: state.has('Zelda Delivered', player))
     # zelda should be saved before agahnim is in play
-    set_rule(world.get_location('Agahnim 1', player), lambda state: state.has('Zelda Delivered', player))
+    add_rule(world.get_location('Agahnim 1', player), lambda state: state.has('Zelda Delivered', player))
 
     # too restrictive for crossed?
     def uncle_item_rule(item):
@@ -1370,8 +1370,9 @@ def standard_rules(world, player):
     add_rule(world.get_entrance('Central Bonk Rocks SW', player), lambda state: state.has('Zelda Delivered', player))
     add_rule(world.get_entrance('Hyrule Castle WN', player), lambda state: state.has('Zelda Delivered', player))
     add_rule(world.get_entrance('Hyrule Castle ES', player), lambda state: state.has('Zelda Delivered', player))
-    set_rule(world.get_entrance('Hyrule Castle Main Gate (South)', player), lambda state: state.has('Zelda Delivered', player))
-    set_rule(world.get_entrance('Hyrule Castle Main Gate (North)', player), lambda state: state.has('Zelda Delivered', player))
+    set_rule(world.get_entrance('Hyrule Castle Main Gate (South)', player), lambda state: state.has('Zelda Delivered', player) and state.has_Mirror(player))
+    set_rule(world.get_entrance('Hyrule Castle Main Gate (North)', player), lambda state: state.has('Zelda Delivered', player) and state.has_Mirror(player))
+    set_rule(world.get_entrance('Hyrule Castle Ledge Drop', player), lambda state: state.has('Zelda Delivered', player))
 
 
 def find_rules_for_zelda_delivery(world, player):
